@@ -1,12 +1,13 @@
 import React from 'react'
-
 import { shallow } from 'enzyme'
+
 import Button from '.'
 
-const name = "ADD";
+const props = {
+  name: 'ADD',
+}
 
-it('renders without crashing', () => {
-  const wrapper = shallow(<Button name={name} />);
+it('renders button and cheking props', () => {
+  const wrapper = shallow(<Button name={props.name} />)
   expect(wrapper.contains('ADD')).toBe(true)
-
-});
+})

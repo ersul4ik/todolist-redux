@@ -5,7 +5,6 @@ const inititalState = {
 }
 
 const rootReducer = (state = inititalState, action) => {
-  console.log(action.payload)
   switch (action.type) {
     case ADD_TODO:
       return { ...state, todos: [...state.todos, action.payload] }
