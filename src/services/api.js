@@ -1,4 +1,3 @@
-function receiveAll() {
-  const todos = [{ id: 1, description: 'first' }, { id: 2, description: 'second' }]
-  return todos
-}
+import axios from 'axios'
+import { SELECT_ALL_TODO } from '../actions'
+
