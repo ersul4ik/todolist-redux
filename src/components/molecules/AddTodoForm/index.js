@@ -1,13 +1,12 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import {connect} from 'react-redux'
 
-import { Button, Label } from 'components'
-import { addTask, fetchTodos, testing } from '../../../actions/'
+import {Button, Label} from 'components'
+import {addTask} from '../../../actions/'
 
 const mapDispatchToProps = (dispatch) => {
   return {
     addTask: todo => dispatch(addTask(todo)),
-    fetchTodos: () => dispatch(fetchTodos()),
   }
 }
 
@@ -23,36 +22,29 @@ class ConnectedForm extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({ description: event.target.value })
+    this.setState({description: event.target.value})
   }
 
   handleSubmit(event) {
     event.preventDefault()
-    const { description } = this.state
-    this.props.addTask({ description })
-    this.setState({ description: '' })
-  }
-
-  select_all_todos() {
-    fetchTodos()
+    const {description} = this.state
+    this.props.addTask({description})
+    this.setState({description: ''})
   }
 
   render() {
-    const { description } = this.state
+    const {description} = this.state
     return (
       <form onSubmit={this.handleSubmit}>
-        <div className="form-group">
-          <Label title="add task" />
-          <input
-            type="text"
-            className="form-control"
-            id="title"
-            value={description}
-            onChange={this.handleChange}
-          />
-        </div>
-        <Button type="submit" name="ADD TASK" />
-        <button type="button" onClick={this.props.fetchTodos}>VIEW ALL TASKS</button>
+        <Label title="add task" />
+        <input
+          type="text"
+          className="form-control"
+          id="title"
+          value={description}
+          onChange={this.handleChange}
+        />
+        <Button type="submit" name="save" />
       </form>
     )
   }

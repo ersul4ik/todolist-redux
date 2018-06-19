@@ -12,9 +12,7 @@ const rootReducer = (state = inititalState, action) => {
     case SELECT_ALL_TODO:
       return { ...state, todos: action.payload }
     case DELETE_TODO:
-      return {
-        ...state,
-      }
+      return { ...state, todos: state.todos.filter(todo => todo.task_id !== action.payload) }
     default:
       return state
   }

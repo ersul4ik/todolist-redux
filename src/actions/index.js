@@ -15,10 +15,14 @@ export function fetchTodos() {
       })
 }
 
-export function deleteTodo(id) {
+export function deleteTodo(task_id) {
   return dispatch =>
-    axios.delete(`http://127.0.0.1:4000/pop/${id}`)
-      .then(dispatch({ type: DELETE_TODO }))
+    axios({
+      method: 'post',
+      url: 'http://127.0.0.1:4000/pop',
+      params: { id: task_id },
+    })
+      .then(dispatch({ type: DELETE_TODO, payload: task_id }))
 }
 
 

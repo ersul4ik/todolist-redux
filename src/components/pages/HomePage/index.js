@@ -3,13 +3,13 @@ import { Provider } from 'react-redux'
 
 import store from '../../../store'
 import Todos from '../../../containers/Todos'
-import AddTodo from '../../../containers/AddTodo'
+import AddTodos from '../../../containers/AddTodos'
 
 
 const HomePage = () => (
   <Provider store={store}>
     <div>
-      <AddTodo />
+      <AddTodos />
       <Todos />
     </div>
   </Provider>

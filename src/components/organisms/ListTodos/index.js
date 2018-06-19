@@ -1,17 +1,22 @@
 import React from 'react'
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import { Button } from 'components'
-import { deleteTodo } from '../../../actions'
+import { deleteTodo, fetchTodos } from '../../../actions'
 
 const mapDispatchToProps = (dispatch) => {
   return {
     deleteTodo: id => dispatch(deleteTodo(id)),
+    fetchTodos: () => dispatch(fetchTodos()),
   }
 }
 
+
 class ListTodos extends React.Component {
+  componentWillMount() {
+    this.props.fetchTodos()
+  }
+
   render() {
     const todos = this.props.todos
     return (
@@ -25,6 +30,7 @@ class ListTodos extends React.Component {
                 className="close right"
                 aria-label="Close"
                 onClick={() => this.props.deleteTodo(todo.task_id)}
+                style={{ marginLeft: '5px' }}
               >
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -36,5 +42,4 @@ class ListTodos extends React.Component {
   }
 }
 
-
-export default ListTodos
+export default connect(null, mapDispatchToProps)(ListTodos)
