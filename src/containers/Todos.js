@@ -10,6 +10,6 @@ const Todos = ({ todos }) => (
   <ListTodos todos={todos} />
 )
 
-const List = connect(mapStateToProps)(Todos)
+const List = connect(mapStateToProps, null)(ListTodos)
 
 export default List
